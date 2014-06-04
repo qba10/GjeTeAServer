@@ -1,60 +1,26 @@
-#include <iostream>
-#include <SFML/Network.hpp>
-using namespace std;
+#include "clientlistener.h"
+#include "gjeteaserver.h"
 
 int main()
 {
-    std::cout << "Server Running" << std::endl;
+    std::cout << "Server GjeTeA Running" << std::endl;
 
-    sf::TcpListener listener;
-    sf::SocketSelector selector;
     bool done = false;
-    std::vector<sf::TcpSocket*> clients;
 
-    listener.listen(2000);
-    selector.add(listener);
-
-
+    SSJServer::ClientListener clientListener;
+    SSJServer::GjeTeAServer GjeTeAServerObject;
     while(!done)
     {
-        if(selector.wait())
-        {
-            if(selector.isReady(listener))
-            {
-                sf::TcpSocket *socket = new sf::TcpSocket;
-                listener.accept(*socket);
-                sf::Packet packet;
-                std::string id;
-                if(socket->receive(packet) == sf::Socket::Done)
-                    packet >> id;
 
-                std::cout << id << " has connected to the chat room" << std::endl;
-                clients.push_back(socket);
-                selector.add(*socket);
-            }
-            else
-            {
+        clientListener.Listener();
+        GjeTeAServerObject.Update();
+        clientListener.setPacketToSend(GjeTeAServerObject.getPacketToSend());
+        clientListener.SenderToClients();
 
-                for(int i = 0; i < clients.size(); i++)
-                {
-                    if(selector.isReady(*clients[i]))
-                    {
-                        sf::Packet packet, sendPacket;
-                        if(clients[i]->receive(packet) == sf::Socket::Done)
-                        {
-                            std::string text;
-                            packet >> text;
-                            cout << text << endl;
-                            sendPacket << text;
 
-                        }
-                    }
-                }
-            }
-        }
+
     }
+    clientListener.CleanConnections();
 
-    for(std::vector<sf::TcpSocket*>::iterator it = clients.begin(); it != clients.end(); it++)
-        delete *it;
     return 0;
 }
