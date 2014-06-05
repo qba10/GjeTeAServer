@@ -11,4 +11,4 @@ namespace SSJServer{
     };
 }
 #endif // POINT_H
- 
+

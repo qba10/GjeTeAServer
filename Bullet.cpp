@@ -36,16 +36,16 @@ namespace SSJServer{
         newPosition.y -= py;
         return newPosition;
 	}
-	Json::Value Bullet::serialize()
+    Json::Value Bullet::serialize()
     {
         Json::Value object;
-           object["objectName"] = _Bullet;
-           object["mapPositionX"] =  this->getMapPosition().x;
-           object["mapPositionY"] =  this->getMapPosition().y;
-           object["activity"] = this->activity;
-           object["angle"] = this->getAngle().getDegrees();
-           object["targetAngle"] = this->targetAngle.getDegrees();
-		   object["name"] = this->name;
+           object[_J(_objectName)] = _Bullet;
+           object[_J(_mapPositionX)] =  this->getMapPosition().x;
+           object[_J(_mapPositionY)] =  this->getMapPosition().y;
+           object[_J(_activity)] = this->activity;
+           object[_J(_angle)] = this->getAngle().getDegrees();
+           object[_J(_targetAngle)] = this->targetAngle.getDegrees();
+           object[_J(_name)] = this->name;
 
         return object;
     } 

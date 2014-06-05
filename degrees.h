@@ -32,4 +32,4 @@ namespace SSJServer {
 }
 
 #endif // DEGREES_H
- 
+

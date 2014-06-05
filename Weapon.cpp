@@ -110,14 +110,14 @@ namespace SSJServer {
     void Weapon::SynchronizationObject(Json::Value){
 
     }
-	Json::Value Weapon::serialize()
+    Json::Value Weapon::serialize()
     {
-		Json::Value object;
-		object["objectName"] = _Weapon;
-		object["mapPositionX"] =  this->getMapPosition().x;
-		object["mapPositionY"] =  this->getMapPosition().y;
-		object["activity"] = this->activity;
-		object["name"] = this->name;
+        Json::Value object;
+        object[_J(_objectName)] = _Weapon;
+        object[_J(_mapPositionX)] =  this->getMapPosition().x;
+        object[_J(_mapPositionY)] =  this->getMapPosition().y;
+        object[_J(_activity)] = this->activity;
+        object[_J(_name)] = this->name;
 
         return object;
     }

@@ -10,4 +10,3 @@ namespace SSJServer{
     };
 }
 #endif // STATICOBJECT_H
-  

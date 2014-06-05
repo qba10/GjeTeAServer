@@ -38,7 +38,7 @@ namespace SSJServer{
         void SynchronizationObject(Json::Value);
 		Weapon();
         ~Weapon();
-		Json::Value serialize();
+        Json::Value serialize();
     };
 }
 #endif

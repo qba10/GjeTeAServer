@@ -50,21 +50,24 @@ namespace SSJServer {
                         {
                             std::string text;
                             packet >> text;
-                            cout << text << endl;
+                           // cout << text << endl;
                             Json::Value root;
                             Json::Reader reader;
                             reader.parse(text, root, false);
-                            if(root["ask"].asString() == "createMainPlayer")
-                                ObjectManager::CreatePlayer(root["playerId"].asString());
-                            else if(root["ask"].asString() == "synchronizeMainPlayer")
-                                dynamic_cast<MainPlayer*>(DataContainer::PlayerList[root["playerId"].asString()])->SynchronizeWithClientOwner(root["parametres"]);
-							else if(root["ask"].asString() == "CreateBullet"){
-								ObjectManager::CreateBullet(root["parameters"]);
-							}
-							else if(root["ask"].asString() == "CreateWeapon"){
-								ObjectManager::CreateWeapon(root["parameters"], root["playerId"].asString());
-							}
-
+                            switch(static_cast<RequestName>(root[_J(_ask)].asInt())){
+                                case _createMainPlayer:
+                                    ObjectManager::CreatePlayer(root[_J(_playerId)].asString());
+                                    break;
+                                case _synchronizeMainPlayer:
+                                    dynamic_cast<MainPlayer*>(DataContainer::PlayerList[root[_J(_playerId)].asString()])->SynchronizeWithClientOwner(root[_J(_parameters)]);
+                                    break;
+                                case _createBullet:
+                                    ObjectManager::CreateBullet(root[_J(_parameters)]);
+                                    break;
+                                case _createWeapon:
+                                    ObjectManager::CreateWeapon(root[_J(_parameters)], root[_J(_playerId)].asString());
+                                    break;
+                            }
                         }
                     }
                 }
@@ -91,4 +94,4 @@ namespace SSJServer {
     }
 
 }
- 
+
