@@ -51,7 +51,7 @@ namespace SSJServer {
     }
     Json::Value InteractiveObject::serialize()
     {
-
+		return Json::nullValue;
     }
 
 }
