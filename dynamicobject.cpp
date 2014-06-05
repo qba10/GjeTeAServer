@@ -84,8 +84,8 @@ namespace SSJServer {
 
     Json::Value DynamicObject::serialize()
     {
-		return Json::nullValue;
-    }
 
-
+        return Json::nullValue;
+	}
 }
+

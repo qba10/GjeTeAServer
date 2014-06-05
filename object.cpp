@@ -37,6 +37,7 @@ namespace SSJServer {
 
 
 
+
     void Object::setActivity(bool activity){
         this->activity = activity;
     }
@@ -47,3 +48,4 @@ namespace SSJServer {
 
 
 }
+

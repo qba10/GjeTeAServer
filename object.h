@@ -24,7 +24,5 @@ namespace SSJServer{
         void setActivity(bool activity);
         bool isActive();
     };
-
-
 }
 #endif // OBJECT_H
