@@ -54,13 +54,19 @@ namespace SSJServer {
                             Json::Value root;
                             Json::Reader reader;
                             reader.parse(text, root, false);
-                            switch(static_cast<RequestName>(root[_ask].asInt())){
+                            switch(static_cast<RequestName>(root[_J(_ask)].asInt())){
                                 case _createMainPlayer:
-                                    ObjectManager::CreatePlayer(root[_playerId].asString());
-                                break;
+                                    ObjectManager::CreatePlayer(root[_J(_playerId)].asString());
+                                    break;
                                 case _synchronizeMainPlayer:
-                                    dynamic_cast<MainPlayer*>(DataContainer::PlayerList[root[_playerId].asString()])->SynchronizeWithClientOwner(root["parametres"]);
-
+                                    dynamic_cast<MainPlayer*>(DataContainer::PlayerList[root[_J(_playerId)].asString()])->SynchronizeWithClientOwner(root[_J(_parameters)]);
+                                    break;
+                                case _createBullet:
+                                    ObjectManager::CreateBullet(root[_J(_parameters)]);
+                                    break;
+                                case _createWeapon:
+                                    ObjectManager::CreateWeapon(root[_J(_parameters)], root[_J(_playerId)].asString());
+                                    break;
                             }
                         }
                     }
@@ -88,3 +94,4 @@ namespace SSJServer {
     }
 
 }
+

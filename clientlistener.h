@@ -21,6 +21,6 @@ namespace SSJServer {
         void Listener();
         void SenderToClients();
         void CleanConnections();
-    };
+    }; 
 }
 #endif // CLIENTLISTENER_H

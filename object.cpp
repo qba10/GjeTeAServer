@@ -33,6 +33,8 @@ namespace SSJServer {
     Json::Value Object::serialize()
     {
 
+		return Json::nullValue;
+
     }
 
 
@@ -47,3 +49,4 @@ namespace SSJServer {
 
 
 }
+

@@ -16,8 +16,6 @@ namespace SSJServer {
         this->degrees = fabs(fmod(degrees, 360.0));
     }
 
-
-
     void Degrees::operator-= (const double & degrees){
         this->degrees -= degrees;
         this->degrees = fabs(fmod(degrees, 360.0));

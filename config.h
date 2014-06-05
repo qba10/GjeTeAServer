@@ -2,6 +2,8 @@
 #define CONFIG_H
 #include "loader.h"
 namespace SSJServer{
+#define _J(enum) intToString(enum)
+    string intToString(int);
 enum WeaponType{
     Glock,
     Uzi,
@@ -16,7 +18,8 @@ enum WeaponType{
 enum RequestName{
     _synchronizeMainPlayer,
     _createMainPlayer,
-    _createBullet
+    _createBullet,
+    _createWeapon
 
 };
 
@@ -32,6 +35,15 @@ enum JsonOption{
     _playerId,
     _ask,
     _parameters,
+    _objectName,
+    _name,
+    _ownerPositionX,
+    _ownerPositionY,
+    _ownerAngle,
+    _weaponType,
+    _objectAmount,
+    _synchronize
+
 
 };
 enum ObjectType{
@@ -41,9 +53,11 @@ enum ObjectType{
     _DynamicObject,
     _MainPlayer,
     _Player,
-    _Bullet
+    _Bullet,
+    _Weapon
 
 };
+
     class Object;
     class Config
     {
@@ -51,5 +65,6 @@ enum ObjectType{
        static size_t RotationSpeed;
     };
 }
+
 
 #endif // CONFIG_H
