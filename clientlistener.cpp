@@ -50,7 +50,7 @@ namespace SSJServer {
                         {
                             std::string text;
                             packet >> text;
-                           // cout << text << endl;
+                            cout << text << endl;
                             Json::Value root;
                             Json::Reader reader;
                             reader.parse(text, root, false);
@@ -58,16 +58,17 @@ namespace SSJServer {
                                 ObjectManager::CreatePlayer(root["playerId"].asString());
                             else if(root["ask"].asString() == "synchronizeMainPlayer")
                                 dynamic_cast<MainPlayer*>(DataContainer::PlayerList[root["playerId"].asString()])->SynchronizeWithClientOwner(root["parametres"]);
-
-
+							else if(root["ask"].asString() == "CreateBullet"){
+								ObjectManager::CreateBullet(root["parameters"]);
+							}
+							else if(root["ask"].asString() == "CreateWeapon"){
+								ObjectManager::CreateWeapon(root["parameters"], root["playerId"].asString());
+							}
 
                         }
                     }
                 }
-
-
             }
-
         }
     }
 
@@ -90,3 +91,4 @@ namespace SSJServer {
     }
 
 }
+ 

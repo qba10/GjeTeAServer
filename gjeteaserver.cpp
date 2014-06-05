@@ -23,7 +23,7 @@ namespace SSJServer {
         }
         this->jsonToSend["synchronize"] =array;
     }
-
+	 
 
 
     sf::Packet GjeTeAServer::getPacketToSend()

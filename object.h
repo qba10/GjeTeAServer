@@ -25,6 +25,6 @@ namespace SSJServer{
         bool isActive();
     };
 
-
+	 
 }
 #endif // OBJECT_H

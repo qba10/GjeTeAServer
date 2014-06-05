@@ -21,4 +21,87 @@ namespace SSJServer {
         ObjectManager::addObjectToObjectsList(obiekt);
         DataContainer::PlayerList[PlayerId] = obiekt;
     }
+
+	void ObjectManager::CreateBullet(Json::Value parameters){
+		Bullet* tmp;
+		Point tmpPoint;
+		tmpPoint.x = parameters["ownerPositionx"].asDouble();
+		tmpPoint.y = parameters["ownerPositiony"].asDouble();
+		Degrees tmpDegrees = parameters["ownerAngle"].asDouble();
+		BulletFactory::setOwnerPosition(tmpPoint);
+		BulletFactory::setOwnerAngle(tmpDegrees);
+		switch(static_cast<WeaponType>(parameters["type"].asInt())){
+		case Glock:
+			tmp = BulletFactory::CreateGlockBullet();
+			break;
+		case Uzi:
+			tmp = BulletFactory::CreateUziBullet();
+			break;
+		case Ak47:
+			tmp =  BulletFactory::CreateAk47Bullet();
+			break;
+		case M16:
+			tmp =  BulletFactory::CreateM16Bullet();
+			break;
+		case Shotgun:
+			tmp =  BulletFactory::CreateShotgunBullet();
+			break;
+		case SniperRifle:
+			tmp =  BulletFactory::CreateSniperRifleBullet();
+			break;
+		case Bazooka:
+			tmp =  BulletFactory::CreateBazookaBullet();
+			break;
+		case Grenade:
+			tmp =  BulletFactory::CreateGrenadeBullet();
+			break;
+		case Knife:
+			tmp =  BulletFactory::CreateKnifeBullet();
+			break;
+		}
+
+		ObjectManager::addObjectToObjectsList(tmp);
+	}
+
+	void ObjectManager::CreateWeapon(Json::Value parameters, string playerID){
+		Weapon* tmp;
+		Point tmpPoint;
+		tmpPoint.x = parameters["ownerPositionx"].asDouble();
+		tmpPoint.y = parameters["ownerPositiony"].asDouble();
+		WeaponFactory::setOwner(dynamic_cast<DynamicObject*>(DataContainer::PlayerList.at(playerID)));
+		switch(static_cast<WeaponType>(parameters["type"].asInt())){
+		case Glock:
+			tmp = WeaponFactory::CreateGlockObject();
+			break;
+		case Uzi:
+			tmp = WeaponFactory::CreateUziObject();
+			break;
+		case Ak47:
+			tmp =  WeaponFactory::CreateAk47Object();
+			break;
+		case M16:
+			tmp =  WeaponFactory::CreateM16Object();
+			break;
+		case Shotgun:
+			tmp =  WeaponFactory::CreateShotgunObject();
+			break;
+		case SniperRifle:
+			tmp =  WeaponFactory::CreateSniperRifleObject();
+			break;
+		case Bazooka:
+			tmp =  WeaponFactory::CreateBazookaObject();
+			break;
+		case Grenade:
+			tmp =  WeaponFactory::CreateGrenadeObject();
+			break;
+		case Knife:
+			tmp =  WeaponFactory::CreateKnifeObject();
+			break;
+		}
+
+		ObjectManager::addObjectToObjectsList(tmp);
+	}
+
+
 }
+ 

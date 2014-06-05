@@ -5,3 +5,4 @@ namespace SSJServer {
     vector <Object*> DataContainer::ObjectLists;
     map <string, Object*> DataContainer::PlayerList;
 }
+ 

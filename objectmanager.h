@@ -2,6 +2,8 @@
 #define OBJECTMANAGER_H
 #include "staticobject.h"
 #include "mainplayer.h"
+#include "BulletFactory.h"
+#include "WeaponFactory.h"
 namespace SSJServer {
 
 class ObjectManager
@@ -11,6 +13,9 @@ class ObjectManager
     public:
         ObjectManager();
        static void CreatePlayer(string PlayerId);
+	   static void CreateBullet(Json::Value);
+	   static void CreateWeapon(Json::Value, string playerID);
     };
 }
 #endif // OBJECTMANAGER_H
+ 

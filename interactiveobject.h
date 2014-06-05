@@ -20,6 +20,6 @@ namespace SSJServer{
         bool isDead();
         Json::Value serialize();
     };
-}
+} 
 
 #endif // INTERACTIVEOBJECT_H

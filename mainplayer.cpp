@@ -25,7 +25,7 @@ MainPlayer::MainPlayer(): DynamicObject()
 
 
 
-    }
+    }  
 
 
     void MainPlayer::update(){
