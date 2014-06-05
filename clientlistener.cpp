@@ -54,20 +54,18 @@ namespace SSJServer {
                             Json::Value root;
                             Json::Reader reader;
                             reader.parse(text, root, false);
-                            if(root["ask"].asString() == "createMainPlayer")
-                                ObjectManager::CreatePlayer(root["playerId"].asString());
-                            else if(root["ask"].asString() == "synchronizeMainPlayer")
-                                dynamic_cast<MainPlayer*>(DataContainer::PlayerList[root["playerId"].asString()])->SynchronizeWithClientOwner(root["parametres"]);
+                            switch(static_cast<RequestName>(root[_ask].asInt())){
+                                case _createMainPlayer:
+                                    ObjectManager::CreatePlayer(root[_playerId].asString());
+                                break;
+                                case _synchronizeMainPlayer:
+                                    dynamic_cast<MainPlayer*>(DataContainer::PlayerList[root[_playerId].asString()])->SynchronizeWithClientOwner(root["parametres"]);
 
-
-
+                            }
                         }
                     }
                 }
-
-
             }
-
         }
     }
 

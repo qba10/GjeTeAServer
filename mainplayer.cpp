@@ -31,7 +31,11 @@ MainPlayer::MainPlayer(): DynamicObject()
     void MainPlayer::update(){
 
     }
-
+    /*
+     *
+     *
+     *
+     **/
     void MainPlayer::SynchronizeWithClientOwner(Json::Value jsonObject){
         if(jsonObject.isMember("mapPositionX")){
             this->mapPosition.x = jsonObject["mapPositionX"].asDouble();

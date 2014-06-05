@@ -28,7 +28,7 @@ namespace SSJServer {
 
     sf::Packet GjeTeAServer::getPacketToSend()
     {
-        Json::StyledWriter writer;
+        Json::FastWriter writer;
         this->packetToSend.clear();
         this->packetToSend << writer.write(this->jsonToSend);
         return this->packetToSend;
