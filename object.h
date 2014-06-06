@@ -23,6 +23,10 @@ namespace SSJServer{
         virtual Json::Value serialize() = 0;
         void setActivity(bool activity);
         bool isActive();
+
+		int syncId;  /* Unique Id used to identificate objects on server */
     };
+
+	
 }
 #endif // OBJECT_H

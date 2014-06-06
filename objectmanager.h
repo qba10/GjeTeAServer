@@ -11,7 +11,8 @@ class ObjectManager
     private:
         static void addObjectToObjectsList(Object *);
     public:
-        ObjectManager();
+	   static int nextId;
+       ObjectManager();
        static void CreatePlayer(string PlayerId);
        static void CreateBullet(Json::Value);
        static void CreateWeapon(Json::Value, string playerID);
