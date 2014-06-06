@@ -11,14 +11,10 @@ int main()
     SSJServer::GjeTeAServer GjeTeAServerObject;
     while(!done)
     {
-
         clientListener.Listener();
         GjeTeAServerObject.Update();
         clientListener.setPacketToSend(GjeTeAServerObject.getPacketToSend());
         clientListener.SenderToClients();
-
-
-
     }
     clientListener.CleanConnections();
 

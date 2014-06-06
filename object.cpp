@@ -36,7 +36,17 @@ namespace SSJServer {
 	}
 
 
-
+	void DataContainer::GarbageCollect()
+	{
+		/*for(int i = 0 ; i < DataContainer::ObjectLists.size() ; ++i)
+		{
+			if (!DataContainer::ObjectLists.at(i)->isActive())
+			{
+				delete DataContainer::ObjectLists.at(i);
+				DataContainer::ObjectLists.at(i) = NULL;
+			}
+		}*/
+	}
 
     void Object::setActivity(bool activity){
         this->activity = activity;

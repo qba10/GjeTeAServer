@@ -46,7 +46,7 @@ namespace SSJServer{
            object[_J(_angle)] = this->getAngle().getDegrees();
            object[_J(_targetAngle)] = this->targetAngle.getDegrees();
            object[_J(_name)] = this->name;
-
+		   object[_J(_syncId)] = this->syncId;
         return object;
     } 
 

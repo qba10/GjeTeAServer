@@ -42,8 +42,8 @@ enum JsonOption{
     _ownerAngle,
     _weaponType,
     _objectAmount,
-    _synchronize
-
+    _synchronize,
+	_syncId
 
 };
 enum ObjectType{
