@@ -4,9 +4,12 @@ namespace SSJServer {
     GjeTeAServer::GjeTeAServer()
     {
        // ObjectManager::CreatePlayer();
+       this->clock.restart();
     }
 
     void GjeTeAServer::Update(){
+        DataContainer::DeltaTime = this->clock.getElapsedTime();
+        this->clock.restart();
         this->CreatePacketToSend();
     }
 

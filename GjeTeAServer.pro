@@ -41,6 +41,5 @@ HEADERS += \
     Weapon.h \
     WeaponFactory.h
 
-OTHER_FILES += \
-    GjeTeAServer.pro.user
+OTHER_FILES +=
 

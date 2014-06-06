@@ -5,6 +5,7 @@ namespace SSJServer {
     class GjeTeAServer
     {
     private:
+        sf::Clock clock;
         sf::Packet packetToSend;
         Json::Value jsonToSend;
     public:

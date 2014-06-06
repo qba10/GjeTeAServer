@@ -24,6 +24,8 @@ namespace SSJServer {
         Json::Value serialize();
 
 
+        size_t getVelocity() const;
+        void setVelocity(const size_t &value);
     };
 }
 #endif // DYNAMICOBJECT_H
