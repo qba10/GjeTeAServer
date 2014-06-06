@@ -16,13 +16,17 @@ namespace SSJServer{
 		Point ownerPosition;
 		Point bulletPosition;
 		string name;
+        WeaponType type;
 		Degrees angle;
 		int range;
-		int bulletSpeed;
 		int damage;
 		bool blastFire;
 		int blastRange;
 		Json::Value serialize(); 
-	};
+        Degrees getAngle() const;
+        void setAngle(const Degrees &value);
+        WeaponType getType() const;
+        void setType(const WeaponType &value);
+    };
 }
 #endif

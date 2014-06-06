@@ -8,10 +8,20 @@ namespace SSJServer {
         this->targetAngle = 0.0;
     }
 
+    
+    size_t DynamicObject::getVelocity() const
+    {
+        return velocity;
+    }
+    
+    void DynamicObject::setVelocity(const size_t &value)
+    {
+        velocity = value;
+    }
     void DynamicObject::MoveForward(){
         this->setMapPosition(CalcNewPosition(this->angle+0));
     }
-
+    
     void DynamicObject::MoveBackward(){
         this->setMapPosition(CalcNewPosition(this->angle+180));
     }
