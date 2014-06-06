@@ -39,7 +39,8 @@ HEADERS += \
     Bullet.h \
     BulletFactory.h \
     Weapon.h \
-    WeaponFactory.h
+    WeaponFactory.h \
+    clientlistener.h
 
 OTHER_FILES +=
 
