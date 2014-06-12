@@ -21,7 +21,8 @@ SOURCES += main.cpp \
     Bullet.cpp \
     BulletFactory.cpp \
     Weapon.cpp \
-    WeaponFactory.cpp
+    WeaponFactory.cpp \
+    helpers.cpp
 
 HEADERS += \
     gjeteaserver.h \
@@ -40,7 +41,8 @@ HEADERS += \
     BulletFactory.h \
     Weapon.h \
     WeaponFactory.h \
-    clientlistener.h
+    clientlistener.h \
+    helpers.h
 
 OTHER_FILES +=
 

@@ -25,6 +25,8 @@ namespace SSJServer{
         GlockBullet->ownerPosition =	BulletFactory::ownerPosition;
         GlockBullet->setMapPosition(	BulletFactory::ownerPosition);
         GlockBullet->setAngle(			BulletFactory::ownerAngle);
+        GlockBullet->setSyncEventActive(true);
+        GlockBullet->setSyncNow();
         return GlockBullet;
     }
     Bullet* BulletFactory::CreateUziBullet(){
@@ -39,6 +41,8 @@ namespace SSJServer{
         UziBullet->ownerPosition =		BulletFactory::ownerPosition;
         UziBullet->setMapPosition(		BulletFactory::ownerPosition);
         UziBullet->setAngle(			BulletFactory::ownerAngle);
+        UziBullet->setSyncEventActive(true);
+        UziBullet->setSyncNow();
         return UziBullet;
     }
     Bullet* BulletFactory::CreateAk47Bullet(){
@@ -53,6 +57,8 @@ namespace SSJServer{
         Ak47Bullet->ownerPosition =		BulletFactory::ownerPosition;
         Ak47Bullet->setMapPosition(		BulletFactory::ownerPosition);
         Ak47Bullet->setAngle(			BulletFactory::ownerAngle);
+        Ak47Bullet->setSyncEventActive(true);
+        Ak47Bullet->setSyncNow();
         return Ak47Bullet;
     }
     Bullet* BulletFactory::CreateM16Bullet(){
@@ -67,6 +73,8 @@ namespace SSJServer{
         M16Bullet->ownerPosition =		BulletFactory::ownerPosition;
         M16Bullet->setMapPosition(		BulletFactory::ownerPosition);
         M16Bullet->setAngle(			BulletFactory::ownerAngle);
+        M16Bullet->setSyncEventActive(true);
+        M16Bullet->setSyncNow();
         return M16Bullet;
     }
     Bullet* BulletFactory::CreateShotgunBullet(){
@@ -81,6 +89,8 @@ namespace SSJServer{
         ShotgunBullet->ownerPosition =	BulletFactory::ownerPosition;
         ShotgunBullet->setMapPosition(	BulletFactory::ownerPosition);
         ShotgunBullet->setAngle(		BulletFactory::ownerAngle);
+        ShotgunBullet->setSyncEventActive(true);
+        ShotgunBullet->setSyncNow();
         return ShotgunBullet;
     }
     Bullet* BulletFactory::CreateSniperRifleBullet(){
@@ -95,6 +105,8 @@ namespace SSJServer{
         SniperRifleBullet->ownerPosition =	BulletFactory::ownerPosition;
         SniperRifleBullet->setMapPosition(	BulletFactory::ownerPosition);
         SniperRifleBullet->setAngle(		BulletFactory::ownerAngle);
+        SniperRifleBullet->setSyncEventActive(true);
+        SniperRifleBullet->setSyncNow();
         return SniperRifleBullet;
     }
     Bullet* BulletFactory::CreateBazookaBullet(){
@@ -109,6 +121,8 @@ namespace SSJServer{
         BazookaBullet->ownerPosition =	BulletFactory::ownerPosition;
         BazookaBullet->setMapPosition(	BulletFactory::ownerPosition);
         BazookaBullet->setAngle(		BulletFactory::ownerAngle);
+        BazookaBullet->setSyncEventActive(true);
+        BazookaBullet->setSyncNow();
         return BazookaBullet;
     }
     Bullet* BulletFactory::CreateGrenadeBullet(){
@@ -123,6 +137,8 @@ namespace SSJServer{
         GrenadeBullet->ownerPosition =	BulletFactory::ownerPosition;
         GrenadeBullet->setMapPosition(	BulletFactory::ownerPosition);
         GrenadeBullet->setAngle(		BulletFactory::ownerAngle);
+        GrenadeBullet->setSyncEventActive(true);
+        GrenadeBullet->setSyncNow();
         return GrenadeBullet;
     }
     Bullet* BulletFactory::CreateKnifeBullet(){
@@ -137,6 +153,8 @@ namespace SSJServer{
         KnifeBullet->ownerPosition =	BulletFactory::ownerPosition;
         KnifeBullet->setMapPosition(	BulletFactory::ownerPosition);
         KnifeBullet->setAngle(			BulletFactory::ownerAngle);
+        KnifeBullet->setSyncEventActive(true);
+        KnifeBullet->setSyncNow();
         return KnifeBullet;
     }
 

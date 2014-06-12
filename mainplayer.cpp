@@ -30,10 +30,10 @@ MainPlayer::MainPlayer(): DynamicObject()
 
     void MainPlayer::SynchronizeWithClientOwner(Json::Value jsonObject){
         if(jsonObject.isMember(_J(_mapPositionX))){
-            this->mapPosition.x = jsonObject[_J(_mapPositionX)].asDouble();
+            this->mapPosition.x = jsonObject[_J(_mapPositionX)].asFloat();
         }
         if(jsonObject.isMember(_J(_mapPositionY))){
-            this->mapPosition.y = jsonObject[_J(_mapPositionY)].asDouble();
+            this->mapPosition.y = jsonObject[_J(_mapPositionY)].asFloat();
         }
         if(jsonObject.isMember(_J(_activity))){
             this->activity = jsonObject[_J(_activity)].asBool();
@@ -48,10 +48,10 @@ MainPlayer::MainPlayer(): DynamicObject()
             this->velocity = jsonObject[_J(_velocity)].asUInt();
         }
         if(jsonObject.isMember(_J(_angle))){
-            this->angle = jsonObject[_J(_angle)].asDouble();
+            this->angle = jsonObject[_J(_angle)].asFloat();
         }
         if(jsonObject.isMember(_J(_targetAngle))){
-            this->targetAngle = jsonObject[_J(_targetAngle)].asDouble();
+            this->targetAngle = jsonObject[_J(_targetAngle)].asFloat();
         }
     }
 
@@ -69,7 +69,8 @@ MainPlayer::MainPlayer(): DynamicObject()
            object[_J(_angle)] = this->getAngle().getDegrees();
            object[_J(_targetAngle)] = this->targetAngle.getDegrees();
 		   object[_J(_syncId)] = this->syncId;
-
+           if(this->syncEventActive)
+                this->syncNow = false;
         return object;
     }
 

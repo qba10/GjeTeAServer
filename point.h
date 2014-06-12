@@ -4,8 +4,8 @@ namespace SSJServer{
     class Point
     {
     public:
-        double x, y;
-        Point(double x, double y);
+        float x, y;
+        Point(float x, float y);
         Point();
 
     };

@@ -35,7 +35,7 @@ namespace SSJServer {
     }
 
     void DynamicObject::RotateLeft(){
-        double deltaAngle = Config::RotationSpeed * DataContainer::DeltaTime.asSeconds();
+        float deltaAngle = Config::RotationSpeed * DataContainer::DeltaTime.asSeconds();
         bool a;
         if(this->targetAngle.getDegrees() - this->angle.getDegrees() < 0)
             a = true;
@@ -54,7 +54,7 @@ namespace SSJServer {
     }
 
     void DynamicObject::RotateRight(){
-        double deltaAngle = Config::RotationSpeed * DataContainer::DeltaTime.asSeconds();
+        float deltaAngle = Config::RotationSpeed * DataContainer::DeltaTime.asSeconds();
         bool a;
         if(this->targetAngle.getDegrees() - this->angle.getDegrees() < 0)
             a = true;
@@ -77,9 +77,9 @@ namespace SSJServer {
         Point newPosition = this->getMapPosition();
         SSJServer::Degrees tempDegrees = this->angle;
         tempDegrees += addAngle;
-        double s = this->velocity * DataContainer::DeltaTime.asSeconds();
-        double px = sin(tempDegrees.getRadians()) * s;
-        double py = cos(tempDegrees.getRadians()) * s;
+        float s = this->velocity * DataContainer::DeltaTime.asSeconds();
+        float px = sin(tempDegrees.getRadians()) * s;
+        float py = cos(tempDegrees.getRadians()) * s;
         newPosition.x += px;
         newPosition.y -= py;
         return newPosition;

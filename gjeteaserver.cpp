@@ -15,14 +15,22 @@ namespace SSJServer {
 
     void GjeTeAServer::CreatePacketToSend()
     {
-        ostringstream ss;
         this->jsonToSend[_J(_objectAmount)] = (int)DataContainer::ObjectLists.size();
         this->jsonToSend[_J(_synchronize)];
         Json::Value array;
         for(int i = 0 ; i <  DataContainer::ObjectLists.size(); i++){
-            ss << i;
+
            DataContainer::ObjectLists.at(i)->update();
-           array.append(DataContainer::ObjectLists.at(i)->serialize());
+           DataContainer::ObjectLists.at(i)->appendBlockSyncTime(DataContainer::DeltaTime);
+           if( DataContainer::ObjectLists.at(i)->isSyncEventActive()){
+               if(DataContainer::ObjectLists.at(i)->isSyncNow())
+                    array.append(DataContainer::ObjectLists.at(i)->serialize());
+           }else{
+               if(DataContainer::ObjectLists.at(i)->getBlockSyncTime() > DataContainer::ObjectLists.at(i)->getSyncPeriod() ){
+                   array.append(DataContainer::ObjectLists.at(i)->serialize());
+                   DataContainer::ObjectLists.at(i)->setBlockSyncTime(sf::milliseconds(0));
+               }
+           }
         }
         this->jsonToSend[_J(_synchronize)] = array;
     }

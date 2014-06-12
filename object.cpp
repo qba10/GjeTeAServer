@@ -2,18 +2,77 @@
 namespace SSJServer {
 	
 
-    Object::Object(double x, double y){
+    Object::Object(float x, float y){
         this->mapPosition.x = x;
         this->mapPosition.y = y;
+        this->setDefaultVar();
+
+
     }
 
     Object::Object(Point position){
         this->mapPosition = position;
+        this->setDefaultVar();
+
+    }
+
+
+    bool Object::isSyncNow() const
+    {
+        return syncNow;
+    }
+
+    void Object::setSyncNow(bool value)
+    {
+        syncNow = value;
+    }
+
+    bool Object::isSyncEventActive() const
+    {
+        return syncEventActive;
+    }
+
+    void Object::setSyncEventActive(bool value)
+    {
+        syncEventActive = value;
+    }
+
+    void Object::appendBlockSyncTime(sf::Time delta)
+    {
+        this->blockSyncTime += delta;
+    }
+
+    sf::Time Object::getBlockSyncTime() const
+    {
+        return blockSyncTime;
+    }
+
+    sf::Time Object::getSyncPeriod() const
+    {
+        return this->syncPeriod;
+    }
+
+    void Object::setBlockSyncTime(const sf::Time &value)
+    {
+        blockSyncTime = value;
+    }
+
+    void Object::setSyncNow()
+    {
+        this->syncNow = true;
+    }
+    void Object::setDefaultVar()
+    {
+        this->syncPeriod = sf::milliseconds(50);
+        this->syncEventActive = false;
+        this->syncNow = false;
+        this->blockSyncTime = sf::milliseconds(0);
     }
 
     Object::Object(){
         this->mapPosition.x = 0;
         this->mapPosition.y = 0;
+        this->setDefaultVar();
 
     }
 
@@ -21,7 +80,7 @@ namespace SSJServer {
         return mapPosition;
     }
 
-    void Object::setMapPosition(double x, double y){
+    void Object::setMapPosition(float x, float y){
         this->mapPosition.x = x;
         this->mapPosition.y = y;
     }

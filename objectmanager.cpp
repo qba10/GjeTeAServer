@@ -4,7 +4,7 @@ namespace SSJServer {
 	int ObjectManager::nextId = 0;
     void ObjectManager::addObjectToObjectsList(Object * object)
     {
-		for(int i = 0 ; i < DataContainer::ObjectLists.size() ; ++i)
+    /*	for(int i = 0 ; i < DataContainer::ObjectLists.size() ; ++i)
 		{
 			if(DataContainer::ObjectLists[i]->isActive() == false)
 			{
@@ -20,7 +20,7 @@ namespace SSJServer {
 				DataContainer::ObjectLists[i] = object;
 				return;
 			}
-		}
+        }*/
         DataContainer::ObjectLists.push_back(object);
     }
 
@@ -41,9 +41,9 @@ namespace SSJServer {
     void ObjectManager::CreateBullet(Json::Value parameters){
 		Bullet* tmp;
 		Point tmpPoint;
-        tmpPoint.x = parameters[_J(_ownerPositionX)].asDouble();
-        tmpPoint.y = parameters[_J(_ownerPositionY)].asDouble();
-        Degrees tmpDegrees = parameters[_J(_ownerAngle)].asDouble();
+        tmpPoint.x = parameters[_J(_ownerPositionX)].asFloat();
+        tmpPoint.y = parameters[_J(_ownerPositionY)].asFloat();
+        Degrees tmpDegrees = parameters[_J(_ownerAngle)].asFloat();
 		BulletFactory::setOwnerPosition(tmpPoint);
 		BulletFactory::setOwnerAngle(tmpDegrees);
         switch(static_cast<WeaponType>(parameters[_J(_weaponType)].asInt())){
@@ -83,8 +83,8 @@ namespace SSJServer {
     void ObjectManager::CreateWeapon(Json::Value parameters, string playerID){
 /*		Weapon* tmp;
 		Point tmpPoint;
-        tmpPoint.x = parameters[_J(_ownerPositionX)].asDouble();
-        tmpPoint.y = parameters[_J(_ownerPositionY)].asDouble();
+        tmpPoint.x = parameters[_J(_ownerPositionX)].asFloat();
+        tmpPoint.y = parameters[_J(_ownerPositionY)].asFloat();
 		WeaponFactory::setOwner(dynamic_cast<DynamicObject*>(DataContainer::PlayerList.at(playerID)));
         switch(static_cast<WeaponType>(parameters[_J(_weaponType)].asInt())){
 		case Glock:
