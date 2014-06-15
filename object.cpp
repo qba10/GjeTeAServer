@@ -63,7 +63,7 @@ namespace SSJServer {
     }
     void Object::setDefaultVar()
     {
-        this->syncPeriod = sf::milliseconds(50);
+        this->syncPeriod = sf::milliseconds(15);
         this->syncEventActive = false;
         this->syncNow = false;
         this->blockSyncTime = sf::milliseconds(0);
@@ -97,14 +97,16 @@ namespace SSJServer {
 
 	void DataContainer::GarbageCollect()
 	{
-		/*for(int i = 0 ; i < DataContainer::ObjectLists.size() ; ++i)
+        for(int i = 0 ; i < DataContainer::ObjectLists.size() ; ++i)
 		{
-			if (!DataContainer::ObjectLists.at(i)->isActive())
-			{
-				delete DataContainer::ObjectLists.at(i);
-				DataContainer::ObjectLists.at(i) = NULL;
-			}
-		}*/
+            if(DataContainer::ObjectLists.at(i) != NULL){
+                if (!DataContainer::ObjectLists.at(i)->isActive() )
+                {
+                    delete DataContainer::ObjectLists.at(i);
+                    DataContainer::ObjectLists.at(i) = NULL;
+                }
+            }
+        }
 	}
 
     void Object::setActivity(bool activity){

@@ -9,6 +9,7 @@
 #include <SFML/Network.hpp>
 #include <jsoncpp/json/json.h>
 #include <sstream>
+#include <helpers.h>
 using namespace std;
 namespace SSJServer {
 

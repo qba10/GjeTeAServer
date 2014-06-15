@@ -4,24 +4,10 @@ namespace SSJServer {
 	int ObjectManager::nextId = 0;
     void ObjectManager::addObjectToObjectsList(Object * object)
     {
-    /*	for(int i = 0 ; i < DataContainer::ObjectLists.size() ; ++i)
-		{
-			if(DataContainer::ObjectLists[i]->isActive() == false)
-			{
-				for( map <string, Object*>::iterator it = DataContainer::PlayerList.begin() ; 
-					it != DataContainer::PlayerList.end(); 
-					it++)
-				{
-					if(it->second == DataContainer::ObjectLists[i]);
-					DataContainer::PlayerList.erase(it);
-					break;
-				}
-				delete DataContainer::ObjectLists[i];
-				DataContainer::ObjectLists[i] = object;
-				return;
-			}
-        }*/
+
         DataContainer::ObjectLists.push_back(object);
+        object->syncId = nextId++;
+
     }
 
     ObjectManager::ObjectManager()
@@ -35,7 +21,6 @@ namespace SSJServer {
         obiekt->setPlayerId(PlayerId);
         ObjectManager::addObjectToObjectsList(obiekt);
         DataContainer::PlayerList[PlayerId] = obiekt;
-		obiekt->syncId = nextId++;
     }
 
     void ObjectManager::CreateBullet(Json::Value parameters){
@@ -77,7 +62,6 @@ namespace SSJServer {
 		}
 
 		ObjectManager::addObjectToObjectsList(tmp);
-		tmp->syncId = nextId++;
 	}
 
     void ObjectManager::CreateWeapon(Json::Value parameters, string playerID){
