@@ -15,6 +15,7 @@ namespace SSJServer{
 
 	void Bullet::update(){
         if( (pow(this->getMapPosition().x - ownerPosition.x, 2) + pow(this->getMapPosition().y - ownerPosition.y, 2)) <= pow(this->range, 2)){
+            this->checkColision();
 
             this->setMapPosition(CalcNewPosition());
 
@@ -58,6 +59,23 @@ namespace SSJServer{
     {
         type = value;
     }
+
+    void Bullet::checkColision()
+    {
+        map<string, Object*>::iterator it;   // teraz it jest wskaznikiem do zbioru
+          for( it=DataContainer::PlayerList.begin(); it!=DataContainer::PlayerList.end(); ++it )
+             // cout <<it->second->syncId << " " << this->OwnerId << endl;
+            if(it->second->syncId != this->OwnerId){
+                if(Helpers::checkCollision(sf::FloatRect(this->mapPosition.x,this->mapPosition.y, 2.f,2.f),
+                                           sf::FloatRect(it->second->getMapPosition().x,it->second->getMapPosition().y,40.f,40.f))){
+                    cout << "bumm" << endl;
+               }
+            }
+           // cout << "?" << endl;
+        }
+
+
+
 
     Degrees Bullet::getAngle() const
     {

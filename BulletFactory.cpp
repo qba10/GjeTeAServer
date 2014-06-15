@@ -1,6 +1,7 @@
 #include "BulletFactory.h"
 namespace SSJServer{
 	Point BulletFactory::ownerPosition;
+    int BulletFactory::ownerId ;
 
 	void BulletFactory::setOwnerPosition(Point ownerPosition){
 		BulletFactory::ownerPosition = ownerPosition;
@@ -9,12 +10,18 @@ namespace SSJServer{
 	Degrees BulletFactory::ownerAngle;
 
 	void BulletFactory::setOwnerAngle(Degrees ownerAngle){
-		BulletFactory::ownerAngle = ownerAngle;
-	}
+        BulletFactory::ownerAngle = ownerAngle;
+    }
+
+    void BulletFactory::setOwnerId(int id)
+    {
+        BulletFactory::ownerId = id;
+    }
 
 
     Bullet* BulletFactory::CreateGlockBullet(){
         Bullet* GlockBullet = new Bullet();
+        GlockBullet->OwnerId=           BulletFactory::ownerId;
         GlockBullet->name =				"Glock";
         GlockBullet->setType(           Glock);
         GlockBullet->range =			400;
@@ -31,6 +38,7 @@ namespace SSJServer{
     }
     Bullet* BulletFactory::CreateUziBullet(){
         Bullet* UziBullet = new Bullet();
+        UziBullet->OwnerId=           BulletFactory::ownerId;
         UziBullet->name =				"Uzi";
         UziBullet->setType(             Uzi);
         UziBullet->range =				500;
@@ -47,6 +55,7 @@ namespace SSJServer{
     }
     Bullet* BulletFactory::CreateAk47Bullet(){
         Bullet* Ak47Bullet = new Bullet();
+        Ak47Bullet->OwnerId=           BulletFactory::ownerId;
         Ak47Bullet->name =				"Ak-47";
         Ak47Bullet->setType(            Ak47);
         Ak47Bullet->range =				800;
@@ -63,6 +72,7 @@ namespace SSJServer{
     }
     Bullet* BulletFactory::CreateM16Bullet(){
         Bullet* M16Bullet = new Bullet();
+        M16Bullet->OwnerId=           BulletFactory::ownerId;
         M16Bullet->name =				"M-16";
         M16Bullet->setType(             M16);
         M16Bullet->range =				800;
@@ -79,6 +89,7 @@ namespace SSJServer{
     }
     Bullet* BulletFactory::CreateShotgunBullet(){
         Bullet* ShotgunBullet = new Bullet();
+        ShotgunBullet->OwnerId=           BulletFactory::ownerId;
         ShotgunBullet->name =			"Shotgun";
         ShotgunBullet->setType(         Shotgun);
         ShotgunBullet->range =			300;
@@ -95,6 +106,7 @@ namespace SSJServer{
     }
     Bullet* BulletFactory::CreateSniperRifleBullet(){
         Bullet* SniperRifleBullet = new Bullet();
+        SniperRifleBullet->OwnerId=           BulletFactory::ownerId;
         SniperRifleBullet->name =		"Sniper rifle";
         SniperRifleBullet->setType(     SniperRifle);
         SniperRifleBullet->range =		1000;
@@ -111,6 +123,7 @@ namespace SSJServer{
     }
     Bullet* BulletFactory::CreateBazookaBullet(){
         Bullet* BazookaBullet = new Bullet();
+        BazookaBullet->OwnerId=           BulletFactory::ownerId;
         BazookaBullet->name =			"Bazooka";
         BazookaBullet->setType(         Bazooka);
         BazookaBullet->range =			600;
@@ -127,6 +140,7 @@ namespace SSJServer{
     }
     Bullet* BulletFactory::CreateGrenadeBullet(){
         Bullet* GrenadeBullet = new Bullet();
+        GrenadeBullet->OwnerId=           BulletFactory::ownerId;
         GrenadeBullet->name =			"Grenade";
         GrenadeBullet->setType(         Grenade);
         GrenadeBullet->range =			500;
@@ -143,6 +157,7 @@ namespace SSJServer{
     }
     Bullet* BulletFactory::CreateKnifeBullet(){
         Bullet* KnifeBullet = new Bullet();
+        KnifeBullet->OwnerId=           BulletFactory::ownerId;
         KnifeBullet->name =				"Knife";
         KnifeBullet->setType(           Knife);
         KnifeBullet->range =			50;

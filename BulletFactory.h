@@ -6,9 +6,11 @@ namespace SSJServer {
 	private:
 		static Point ownerPosition;
 		static Degrees ownerAngle;
+        static int ownerId;
 	public:
 		static void setOwnerPosition(Point ownerPosition);
 		static void setOwnerAngle(Degrees ownerAngle);
+        static void setOwnerId(int id);
         static Bullet* CreateGlockBullet();
         static Bullet* CreateUziBullet();
         static Bullet* CreateAk47Bullet();

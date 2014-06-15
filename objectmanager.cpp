@@ -26,6 +26,8 @@ namespace SSJServer {
     void ObjectManager::CreateBullet(Json::Value parameters){
 		Bullet* tmp;
 		Point tmpPoint;
+        cout << parameters[_J(_ownerSyncId)] << endl;
+        BulletFactory::setOwnerId(parameters[_J(_ownerSyncId)].asInt());
         tmpPoint.x = parameters[_J(_ownerPositionX)].asFloat();
         tmpPoint.y = parameters[_J(_ownerPositionY)].asFloat();
         Degrees tmpDegrees = parameters[_J(_ownerAngle)].asFloat();

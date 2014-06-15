@@ -1,6 +1,7 @@
 #ifndef HELPERS_H
 #define HELPERS_H
 #include <iostream>
+#include <SFML/Graphics/Rect.hpp>
 using namespace std;
 namespace SSJServer {
 
@@ -28,6 +29,23 @@ namespace SSJServer {
             return *result;
 
         }
+        class Helpers{
+        public:
+          static  bool valueInRange(int value, int min, int max)
+            { return (value >= min) && (value <= max); }
+
+          static  bool checkCollision(sf::Rect<float> A, sf::Rect<float> B)
+            {
+                bool xOverlap = valueInRange(A.left, B.left, B.left + B.width) ||
+                                valueInRange(B.left, A.left, A.left + A.width);
+
+                bool yOverlap = valueInRange(A.top, B.top, B.top + B.height) ||
+                                valueInRange(B.top, A.top, A.top + A.height);
+
+                return xOverlap && yOverlap;
+            }
+
+        };
     }
 
 #endif // HELPERS_H

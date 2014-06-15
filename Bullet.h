@@ -15,6 +15,7 @@ namespace SSJServer{
 
 		Point ownerPosition;
 		Point bulletPosition;
+        int OwnerId;
 		string name;
         WeaponType type;
 		Degrees angle;
@@ -27,6 +28,7 @@ namespace SSJServer{
         void setAngle(const Degrees &value);
         WeaponType getType() const;
         void setType(const WeaponType &value);
+        void checkColision();
     };
 }
 #endif

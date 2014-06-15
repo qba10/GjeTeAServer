@@ -44,7 +44,8 @@ enum JsonOption{
     _objectAmount,
     _synchronize,
     _syncId,
-    _delete
+    _delete,
+    _ownerSyncId
 
 
 };
