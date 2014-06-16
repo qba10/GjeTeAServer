@@ -16,6 +16,7 @@ MainPlayer::MainPlayer(): DynamicObject()
 {
     this->setActivity(true);
     this->setMaxHP(100);
+    frags = 0;
     this->velocity = 200.0;
 		this->setHP(this->getMaxHP());
 		this->isFiring = false;
@@ -25,7 +26,20 @@ MainPlayer::MainPlayer(): DynamicObject()
 
 
     void MainPlayer::update(){
-
+        if(this->isDead()){
+            this->setMapPosition(640,640);
+            this->setHP(100);
+            this->frags++;
+        }
+        if(this->frags == 10)
+        {
+            for(map<string, Object*>::iterator it = DataContainer::PlayerList.begin() ; it != DataContainer::PlayerList.end() ; it++)
+            {
+                ((MainPlayer*)it->second)->setMapPosition(640,640);
+                ((MainPlayer*)it->second)->setHP(100);
+                ((MainPlayer*)it->second)->frags = 0;
+            }
+        }
     }
 
     void MainPlayer::SynchronizeWithClientOwner(Json::Value jsonObject){
@@ -55,6 +69,8 @@ MainPlayer::MainPlayer(): DynamicObject()
         }
     }
 
+
+
     Json::Value MainPlayer::serialize()
     {
         Json::Value object;
@@ -69,6 +85,7 @@ MainPlayer::MainPlayer(): DynamicObject()
            object[_J(_angle)] = this->getAngle().getDegrees();
            object[_J(_targetAngle)] = this->targetAngle.getDegrees();
 		   object[_J(_syncId)] = this->syncId;
+           object[_J(_deaths)] = this->frags;
            if(this->syncEventActive)
                 this->syncNow = false;
         return object;

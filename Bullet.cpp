@@ -67,8 +67,8 @@ namespace SSJServer{
              // cout <<it->second->syncId << " " << this->OwnerId << endl;
             if(it->second->syncId != this->OwnerId){
                 if(Helpers::checkCollision(sf::FloatRect(this->mapPosition.x,this->mapPosition.y, 2.f,2.f),
-                                           sf::FloatRect(it->second->getMapPosition().x,it->second->getMapPosition().y,40.f,40.f))){
-                    cout << "bumm" << endl;
+                                           sf::FloatRect(it->second->getMapPosition().x,it->second->getMapPosition().y,80.f,80.f))){
+                   ((DynamicObject*)it->second)->decreaseHp(10);
                }
             }
            // cout << "?" << endl;

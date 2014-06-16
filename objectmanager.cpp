@@ -19,6 +19,7 @@ namespace SSJServer {
     {
         MainPlayer *obiekt = new MainPlayer();
         obiekt->setPlayerId(PlayerId);
+        obiekt->setMapPosition(640,640);
         ObjectManager::addObjectToObjectsList(obiekt);
         DataContainer::PlayerList[PlayerId] = obiekt;
     }

@@ -43,8 +43,17 @@ namespace SSJServer {
         return this->maxHP;
     }
 
+    void InteractiveObject::decreaseHp(int value)
+    {
+
+            this->hp -= value;
+            if(this->hp < 0)
+                this->hp = 0;
+
+    }
+
     bool InteractiveObject::isDead(){
-        if(this->hp == 0)
+        if(this->hp <= 0)
             return true;
         else
             return false;

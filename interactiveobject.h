@@ -17,6 +17,8 @@ namespace SSJServer{
         void subHP(size_t hp);
         size_t getHP();
         size_t getMaxHP();
+        void decreaseHp(int value);
+
         bool isDead();
         Json::Value serialize();
     };

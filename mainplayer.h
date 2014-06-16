@@ -7,6 +7,7 @@ namespace SSJServer{
     private:
 		bool isFiring;
         string playerId;
+        int frags;
 	protected:
 
     public:
